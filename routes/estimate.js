@@ -2,14 +2,14 @@ const express = require('express');
 const pool = require('../data/config');
 const router = express.Router();
 
-router.get('/', (req, res) => {     
-    if (estimateId) {
-        pool.query('SELECT * FROM cust_estimates', (error, result) => {
-            if (error) throw error;
+router.get('/', (req, res) => {
 
-            res.send(result);
-        });
-    }
+    pool.query('SELECT * FROM cust_estimates', (error, result) => {
+        if (error) throw error;
+
+        res.send(result);
+    });
+
 });
 
 router.get('/:id', (req, res) => {
@@ -23,13 +23,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', function (req, res) {
- 
-    let oValue = req.body;    
- 
+
+    let oValue = req.body;
+
     if (!oValue) {
-        return res.status(400).send({ error:true, message: 'Please provide values' });
+        return res.status(400).send({ error: true, message: 'Please provide values' });
     }
- 
+
     pool.query("INSERT INTO cust_estimates SET ? ", oValue, function (error, results, fields) {
         if (error) throw error;
         return res.status(201).send(results);
