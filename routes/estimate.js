@@ -3,13 +3,11 @@ const pool = require('../data/config');
 const router = express.Router();
 
 router.get('/', (req, res) => {     
-    if (estimateId) {
-        pool.query('SELECT * FROM cust_estimates', (error, result) => {
+            pool.query('SELECT * FROM cust_estimates', (error, result) => {
             if (error) throw error;
 
             res.send(result);
-        });
-    }
+        });    
 });
 
 router.get('/:id', (req, res) => {
