@@ -274,7 +274,7 @@ router.get('/:id', (req, res) => {
 
             oEstimate.finalAdd = finalAdd;            
                 
-            res.send(oEstimate);
+            res.send([oEstimate, result]);
         }        
     });
 });
