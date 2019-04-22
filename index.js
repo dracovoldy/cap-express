@@ -6,6 +6,7 @@ const cors = require('cors');
 //Require Routes
 const home = require('./routes/home');
 const estimate = require('./routes/estimate');
+const data = require('./routes/data');
 // const jobs = require('./routes/jobs');
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(morgan('tiny'));
 //use - routes
 app.use('/', home);
 app.use('/api/estimate', estimate);
+app.use('/api/data', data);
 // app.use('/api/jobs', jobs);
 
 const port = process.env.PORT || 3000;

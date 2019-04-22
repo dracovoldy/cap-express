@@ -1,6 +1,14 @@
 create table `appdb`.`cust_estimates` (
   `entry_id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-  `comp_id` INT UNSIGNED NOT NULL,
+  `comp_name` VARCHAR(20),
+  `comp_sector` TEXT,
+  `comp_region` VARCHAR(5),
+  `client_name` TEXT,
+  `client_contact` TEXT,
+  `cap_name` VARCHAR(20),
+  `cap_email` TEXT,
+  `cap_phone` VARCHAR(15),  
+
   `bg_prog_desc` TEXT,
   `bg_bizd_desc` TEXT,
   `bg_itdr_desc` TEXT,
@@ -36,10 +44,7 @@ create table `appdb`.`cust_estimates` (
   `sc_bp_otc` TINYINT UNSIGNED, 
   `sc_bp_ptp` TINYINT UNSIGNED, 
   `sc_bp_dts` TINYINT UNSIGNED, 
-  `sc_bp_mts` TINYINT UNSIGNED, 
-  `sc_bp_itd` TINYINT UNSIGNED, 
-  `sc_bp_stc` TINYINT UNSIGNED, 
-  `sc_bp_htr` TINYINT UNSIGNED, 
+  `sc_bp_mts` TINYINT UNSIGNED,   
   `sc_bp_other` TEXT,
 
   `sc_ints_v` INT UNSIGNED,
@@ -69,10 +74,11 @@ create table `appdb`.`cust_estimates` (
   `if_key_vistx_v` TINYINT UNSIGNED, 
   `if_key_mdg_v` TINYINT UNSIGNED, 
   `if_key_optx_v` TINYINT UNSIGNED, 
-  `if_key_others_v` TEXT, 
+  `if_key_others_v` TINYINT UNSIGNED,
 
   `if_dev_edi_v` INT UNSIGNED, 
   `if_dev_mdlw_v` INT UNSIGNED, 
+  `if_dev_mdlw_desc` TEXT, 
   `if_dev_ricefw_v` INT UNSIGNED, 
   `if_dev_comm` TEXT
 );
