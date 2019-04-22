@@ -9,18 +9,22 @@ router.get('/:id', (req, res) => {
     const oWeights = {};
 
     //Plants
+    oWeights.loc_a1 = {};
     oWeights.loc_a1.fix = 1;
     oWeights.loc_a1.iHrs = 100;
     oWeights.loc_a1.cHrs = 150;
 
+    oWeights.loc_b1 = {};
     oWeights.loc_b1.fix = 1;
     oWeights.loc_b1.iHrs = 100;
     oWeights.loc_b1.cHrs = 200;
 
+    oWeights.loc_c1 = {};
     oWeights.loc_c1.fix = 1;
     oWeights.loc_c1.iHrs = 100;
     oWeights.loc_c1.cHrs = 100;
 
+    oWeights.loc_d1 = {};
     oWeights.loc_d1.fix = 1;
     oWeights.loc_d1.iHrs = 100;
     oWeights.loc_d1.cHrs = 300;    
@@ -81,77 +85,95 @@ router.get('/:id', (req, res) => {
 
 
     //LOB
+    oWeights.lob_ftm = {};
     oWeights.lob_ftm.fix = 15;
     oWeights.lob_ftm.cHrs = 1200;
     oWeights.lob_ftm.iHrs = 50;
 
+    oWeights.lob_ptp = {};
     oWeights.lob_ptp.fix = 15;
     oWeights.lob_ptp.cHrs = 1200;
     oWeights.lob_ptp.iHrs = 50;
 
+    oWeights.lob_mts = {};
     oWeights.lob_mts.fix = 15;
     oWeights.lob_mts.cHrs = 1200;
     oWeights.lob_mts.iHrs = 50;
 
+    oWeights.lob_otc = {};
     oWeights.lob_otc.fix = 15;
     oWeights.lob_otc.cHrs = 1200;
     oWeights.lob_otc.iHrs = 50;
 
+    oWeights.lob_dts = {};
     oWeights.lob_dts.fix = 15;
     oWeights.lob_dts.cHrs = 1200;
     oWeights.lob_dts.iHrs = 50;   
 
+    oWeights.lob_oth = {};
     oWeights.lob_oth.fix = 15;
     oWeights.lob_oth.cHrs = 1200;
     oWeights.lob_oth.iHrs = 50;
 
     //scope
+    oWeights.scope_ints = {};
     oWeights.scope_ints.fix = 70;
     oWeights.scope_ints.cHrs = 300;
     oWeights.scope_ints.iHrs = 10;
 
+    oWeights.scope_unts = {};
     oWeights.scope_unts.fix = 200;
     oWeights.scope_unts.cHrs = 500;
     oWeights.scope_unts.iHrs = 2;
 
+    oWeights.scope_user = {};
     oWeights.scope_user.fix = 50;
     oWeights.scope_user.cHrs = 250;
     oWeights.scope_user.iHrs = 1;
 
+    oWeights.lang = {};
     oWeights.lang.fix = 1;
     oWeights.lang.cHrs = 100;
     oWeights.lang.iHrs = 50;
 
     //infra
+    oWeights.inst = {};
     oWeights.inst.fix = 1;
     oWeights.inst.cHrs = 1000;
     oWeights.inst.iHrs = 200;
 
+    oWeights.saplvl = {};
     oWeights.saplvl.fix = 1;
     oWeights.saplvl.cHrs = 500;
     oWeights.saplvl.iHrs = 500;
 
+    oWeights.consys = {};
     oWeights.consys.fix = 1;
     oWeights.consys.cHrs = 500;
     oWeights.consys.iHrs = 200;
 
+    oWeights.keySap = {};
     oWeights.keySap.fix = 1;
     oWeights.keySap.cHrs = 250;
     oWeights.keySap.iHrs = 100;
 
+    oWeights.size = {};
     oWeights.size.fix = 1;
     oWeights.size.cHrs = 200;
     oWeights.size.iHrs = 50;    
 
     //development
+    oWeights.edi = {};
     oWeights.edi.fix = 1;
     oWeights.edi.cHrs = 200;
     oWeights.edi.iHrs = 50;  
 
+    oWeights.middle = {};
     oWeights.middle.fix = 1;
     oWeights.middle.cHrs = 200;
     oWeights.middle.iHrs = 50;  
 
+    oWeights.ricefw = {};
     oWeights.ricefw.fix = 1;
     oWeights.ricefw.cHrs = 200;
     oWeights.ricefw.iHrs = 50; 
