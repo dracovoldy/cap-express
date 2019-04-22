@@ -279,28 +279,36 @@ router.get('/:id', (req, res) => {
             oEstimate.PersonDays = Math.ceil(finalAdd/8); 
             oEstimate.PersonWeeks = Math.ceil(finalAdd/40); 
             oEstimate.PersonMonths = Math.ceil(finalAdd/160); 
-            oEstimate.LowPersonMonths = Math.ceil(oEstimate.PersonMonths * 0.8);
-            oEstimate.HighPersonMonths = Math.ceil(oEstimate.PersonMonths * 1.2);
+            oEstimate.LowPersonMonths = "";
+            oEstimate.HighPersonMonths = "";
             oEstimate.Scale = "";
 
             oEstimate.result = result;      
             
             if(oEstimate.PersonDays < 1600 ){
                 oEstimate.Scale = "Small";
-                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 15;
-                oEstimate.PersonMonths = oEstimate.PersonMonths / 15;
+                oEstimate.PersonWeeks = Math.ceil(oEstimate.PersonWeeks / 10);
+                oEstimate.PersonMonths = Math.ceil(oEstimate.PersonMonths / 10);
+                oEstimate.LowPersonMonths = Math.ceil(oEstimate.PersonMonths * 0.8);
+                oEstimate.HighPersonMonths = Math.ceil(oEstimate.PersonMonths * 1.2);
             }else if(oEstimate.PersonDays >= 1600 && oEstimate.PersonDays < 2100){
                 oEstimate.Scale = "Medium";
-                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 20;
-                oEstimate.PersonMonths = oEstimate.PersonMonths / 20;
+                oEstimate.PersonWeeks = Math.ceil(oEstimate.PersonWeeks / 20);
+                oEstimate.PersonMonths = Math.ceil(oEstimate.PersonMonths / 20);
+                oEstimate.LowPersonMonths = Math.ceil(oEstimate.PersonMonths * 0.8);
+                oEstimate.HighPersonMonths = Math.ceil(oEstimate.PersonMonths * 1.2);
             }else if(oEstimate.PersonDays >= 2100 && oEstimate.PersonDays < 2500){
                 oEstimate.Scale = "Large";
-                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 30;
-                oEstimate.PersonMonths = oEstimate.PersonMonths / 30;
+                oEstimate.PersonWeeks = Math.ceil(oEstimate.PersonWeeks / 30);
+                oEstimate.PersonMonths = Math.ceil(oEstimate.PersonMonths / 30);
+                oEstimate.LowPersonMonths = Math.ceil(oEstimate.PersonMonths * 0.8);
+                oEstimate.HighPersonMonths = Math.ceil(oEstimate.PersonMonths * 1.2);
             }else if(oEstimate.PersonDays >= 2500){
                 oEstimate.Scale = "X-Large";
-                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 40;
-                oEstimate.PersonMonths = oEstimate.PersonMonths / 40;
+                oEstimate.PersonWeeks = Math.ceil(oEstimate.PersonWeeks / 40);
+                oEstimate.PersonMonths = Math.ceil(oEstimate.PersonMonths / 40);
+                oEstimate.LowPersonMonths = Math.ceil(oEstimate.PersonMonths * 0.8);
+                oEstimate.HighPersonMonths = Math.ceil(oEstimate.PersonMonths * 1.2);
             }
                 
             res.send(oEstimate);
