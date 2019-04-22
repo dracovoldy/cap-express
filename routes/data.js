@@ -286,13 +286,21 @@ router.get('/:id', (req, res) => {
             oEstimate.result = result;      
             
             if(oEstimate.PersonDays < 1600 ){
-                oEstimate.Scale = "Small"
+                oEstimate.Scale = "Small";
+                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 8;
+                oEstimate.PersonMonths = oEstimate.PersonMonths / 8;
             }else if(oEstimate.PersonDays >= 1600 && oEstimate.PersonDays < 2100){
-                oEstimate.Scale = "Medium"
+                oEstimate.Scale = "Medium";
+                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 10;
+                oEstimate.PersonMonths = oEstimate.PersonMonths / 10;
             }else if(oEstimate.PersonDays >= 2100 && oEstimate.PersonDays < 2500){
-                oEstimate.Scale = "Large"
+                oEstimate.Scale = "Large";
+                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 15;
+                oEstimate.PersonMonths = oEstimate.PersonMonths / 15;
             }else if(oEstimate.PersonDays >= 2500){
-                oEstimate.Scale = "X-Large"
+                oEstimate.Scale = "X-Large";
+                oEstimate.PersonWeeks = oEstimate.PersonWeeks / 20;
+                oEstimate.PersonMonths = oEstimate.PersonMonths / 20;
             }
                 
             res.send(oEstimate);
