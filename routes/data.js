@@ -275,8 +275,25 @@ router.get('/:id', (req, res) => {
             var finalAdd = addLoc + addLOB + addInts + addUnts + addUser + addLang + addInstance + addPack + addSize +
                             addEDI + addMiddle + addRICEFW;
 
-            oEstimate.finalAdd = finalAdd;     
-            oEstimate.result = result;       
+            oEstimate.WorkHours = finalAdd;  
+            oEstimate.PersonDays = Math.ceil(finalAdd/8); 
+            oEstimate.PersonWeeks = Math.ceil(finalAdd/40); 
+            oEstimate.PersonMonths = Math.ceil(finalAdd/160); 
+            oEstimate.LowPersonMonths = Math.ceil(oEstimate.PersonMonths * 0.8);
+            oEstimate.HighPersonMonths = Math.ceil(oEstimate.PersonMonths * 1.2);
+            oEstimate.Scale = "";
+
+            oEstimate.result = result;      
+            
+            if(oEstimate.PersonDays < 1600 ){
+                oEstimate.Scale = "Small"
+            }else if(oEstimate.PersonDays >= 1600 && oEstimate.PersonDays < 2100){
+                oEstimate.Scale = "Medium"
+            }else if(oEstimate.PersonDays >= 2100 && oEstimate.PersonDays < 2500){
+                oEstimate.Scale = "Large"
+            }else if(oEstimate.PersonDays >= 2500){
+                oEstimate.Scale = "X-Large"
+            }
                 
             res.send(oEstimate);
         }        
