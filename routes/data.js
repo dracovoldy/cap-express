@@ -189,10 +189,13 @@ router.get('/:id', (req, res) => {
             var c_loc3 = 0;
             var c_loc4 = 0;
 
-            c_loc1 = result.sc_loc_apac_va + result.sc_loc_eu_va + result.sc_loc_latam_va + result.sc_loc_na_va;
-            c_loc2 = result.sc_loc_apac_vb + result.sc_loc_eu_vb + result.sc_loc_latam_vb + result.sc_loc_na_vb;
-            c_loc3 = result.sc_loc_eu_vc + result.sc_loc_eu_vc + result.sc_loc_latam_vc + result.sc_loc_na_vc;
-            c_loc4 = result.sc_loc_apac_vd + result.sc_loc_eu_vd + result.sc_loc_latam_vd + result.sc_loc_na_vd;            
+            var res_line = result[0];
+
+            c_loc1 = res_line.sc_loc_apac_va + res_line.sc_loc_eu_va + res_line.sc_loc_latam_va + res_line.sc_loc_na_va;
+            console.log("loc 1 ", c_loc1);
+            c_loc2 = res_line.sc_loc_apac_vb + res_line.sc_loc_eu_vb + res_line.sc_loc_latam_vb + res_line.sc_loc_na_vb;
+            c_loc3 = res_line.sc_loc_eu_vc + res_line.sc_loc_eu_vc + res_line.sc_loc_latam_vc + res_line.sc_loc_na_vc;
+            c_loc4 = res_line.sc_loc_apac_vd + res_line.sc_loc_eu_vd + res_line.sc_loc_latam_vd + res_line.sc_loc_na_vd;            
 
             var c_loc1_m = (oWeights.loc_a1.fix * oWeights.loc_a1.cHrs) + ((c_loc1 - oWeights.loc_a1.fix) * oWeights.loc_a1.iHrs);
             var c_loc2_m = (oWeights.loc_b1.fix * oWeights.loc_b1.cHrs) + ((c_loc2 - oWeights.loc_b1.fix) * oWeights.loc_b1.iHrs);
@@ -204,77 +207,78 @@ router.get('/:id', (req, res) => {
 
             //lobs
             var addFTM = 0;
-            if(result.sc_bp_ftm > 0){
+            if(res_line.sc_bp_ftm > 0){
                 addFTM = oWeights.lob_ftm.cHrs;
             }
 
             var addPTP = 0;
-            if(result.sc_bp_ptp > 0){
+            if(res_line.sc_bp_ptp > 0){
                 addPTP = oWeights.lob_ptp.cHrs;
             }
 
             var addMTS = 0;
-            if(result.sc_bp_mts > 0){
+            if(res_line.sc_bp_mts > 0){
                 addMTS = oWeights.lob_mts.cHrs;
             }
 
             var addOTC = 0;
-            if(result.sc_bp_otc > 0){
+            if(res_line.sc_bp_otc > 0){
                 addOTC = oWeights.lob_otc.cHrs;
             }
 
             var addDTS = 0;
-            if(result.sc_bp_dts > 0){
+            if(res_line.sc_bp_dts > 0){
                 addDTS = oWeights.lob_dts.cHrs;
             }
             //final LOB
             var addLOB = addFTM + addPTP + addMTS + addOTC + addDTS;
 
             //ints
-            var addInts = oWeights.scope_ints.cHrs + ((result.sc_ints_v - oWeights.scope_ints.fix) * oWeights.scope_ints.iHrs);
+            var addInts = oWeights.scope_ints.cHrs + ((res_line.sc_ints_v - oWeights.scope_ints.fix) * oWeights.scope_ints.iHrs);
 
             //unts
-            var addUnts = oWeights.scope_unts.cHrs + ((result.sc_unts_v - oWeights.scope_unts.fix) * oWeights.scope_unts.iHrs);
+            var addUnts = oWeights.scope_unts.cHrs + ((res_line.sc_unts_v - oWeights.scope_unts.fix) * oWeights.scope_unts.iHrs);
             
             //users       
-            var addUser = oWeights.scope_user.cHrs + ((result.sc_user_v - oWeights.scope_user.fix) * oWeights.scope_user.iHrs);
+            var addUser = oWeights.scope_user.cHrs + ((res_line.sc_user_v - oWeights.scope_user.fix) * oWeights.scope_user.iHrs);
 
             //lang
-            var addLang = oWeights.lang.cHrs + ((result.sc_lang_v - oWeights.lang.fix) * oWeights.lang.iHrs);
+            var addLang = oWeights.lang.cHrs + ((res_line.sc_lang_v - oWeights.lang.fix) * oWeights.lang.iHrs);
 
             //infra
             //instance
-            var addInstance = oWeights.inst.cHrs + ((result.if_psap_v - oWeights.inst.fix) * oWeights.inst.iHrs);
+            var addInstance = oWeights.inst.cHrs + ((res_line.if_psap_v - oWeights.inst.fix) * oWeights.inst.iHrs);
 
             //pack lvl
-            var addPack = oWeights.consys.cHrs + ((result.if_syscon_v - oWeights.consys.fix) * oWeights.consys.iHrs);
+            var addPack = oWeights.consys.cHrs + ((res_line.if_syscon_v - oWeights.consys.fix) * oWeights.consys.iHrs);
 
             //key SAP
-            var addKeySAP = (result.if_key_arib_v + result.if_key_conc_v + result.if_key_conc_v +
-                result.if_key_sf_v + result.if_key_solm_v + result.if_key_ewm_v + result.if_key_gts_v +
-                result.if_key_attp_v + result.if_key_tms_v + result.if_key_apo_v + result.if_key_vistx_v +
-                result.if_key_mdg_v + result.if_key_optx_v + result.if_key_others_v) * oWeights.keySap.cHrs;
+            var addKeySAP = (res_line.if_key_arib_v + res_line.if_key_conc_v + res_line.if_key_conc_v +
+                res_line.if_key_sf_v + res_line.if_key_solm_v + res_line.if_key_ewm_v + res_line.if_key_gts_v +
+                res_line.if_key_attp_v + res_line.if_key_tms_v + res_line.if_key_apo_v + res_line.if_key_vistx_v +
+                res_line.if_key_mdg_v + res_line.if_key_optx_v + res_line.if_key_others_v) * oWeights.keySap.cHrs;
                 
             //sizeSAP
-            var addSize = oWeights.size.cHrs + ((result.if_sysize_v - oWeights.size.fix) * oWeights.size.iHrs);
+            var addSize = oWeights.size.cHrs + ((res_line.if_sysize_v - oWeights.size.fix) * oWeights.size.iHrs);
 
             //development
             //edi
-            var addEDI = oWeights.edi.cHrs + ((result.if_dev_edi_v - oWeights.edi.fix) * oWeights.edi.iHrs);
+            var addEDI = oWeights.edi.cHrs + ((res_line.if_dev_edi_v - oWeights.edi.fix) * oWeights.edi.iHrs);
 
             //middle
-            var addMiddle = oWeights.middle.cHrs + ((result.if_dev_mdlw_v - oWeights.middle.fix) * oWeights.middle.iHrs);
+            var addMiddle = oWeights.middle.cHrs + ((res_line.if_dev_mdlw_v - oWeights.middle.fix) * oWeights.middle.iHrs);
 
             //ricefw
-            var addRICEFW = oWeights.ricefw.cHrs + ((result.if_dev_ricefw_v - oWeights.ricefw.fix) * oWeights.ricefw.iHrs);
+            var addRICEFW = oWeights.ricefw.cHrs + ((res_line.if_dev_ricefw_v - oWeights.ricefw.fix) * oWeights.ricefw.iHrs);
 
             //add all
             var finalAdd = addLoc + addLOB + addInts + addUnts + addUser + addLang + addInstance + addPack + addSize +
                             addEDI + addMiddle + addRICEFW;
 
-            oEstimate.finalAdd = finalAdd;            
+            oEstimate.finalAdd = finalAdd;     
+            oEstimate.result = result;       
                 
-            res.send([oEstimate, result]);
+            res.send(oEstimate);
         }        
     });
 });
