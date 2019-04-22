@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    const estimateId = req.params.estimateId;
+    const estimateId = req.params.id;
     console.log(estimateId);
 
     pool.query('SELECT * FROM cust_estimates as i WHERE i.entry_id = ?', [estimateId], (error, result) => {

@@ -3,7 +3,7 @@ const pool = require('../data/config');
 const router = express.Router();
 
 router.get('/:id', (req, res) => {
-    const estimateId = req.params.estimateId;
+    const estimateId = req.params.id;
     
     const oEstimate = {};
     const oWeights = {};
