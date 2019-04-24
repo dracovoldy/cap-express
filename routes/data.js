@@ -302,7 +302,7 @@ router.get('/:id', (req, res) => {
                 oEstimate.LowPersonMonths = 8;
                 oEstimate.HighPersonMonths = 10;
             }
-
+            oEstimate.result = result;    
 
             // oEstimate.PersonDays = Math.ceil(finalAdd/8); 
             // oEstimate.PersonWeeks = Math.ceil(finalAdd/40); 
