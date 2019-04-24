@@ -204,6 +204,28 @@ router.get('/:id', (req, res) => {
 
             //final LOC
             var addLoc = c_loc1_m + c_loc2_m + c_loc3_m + c_loc4_m;
+            var addLocExtra = 0;
+
+            selLoc = 0;
+
+            if(res_line.sc_reg_na_x === "X"){
+                selLoc++;
+            }
+            if(res_line.sc_reg_latam_x === "X"){
+                selLoc++;
+            }
+            if(res_line.sc_reg_apac_x === "X"){
+                selLoc++;
+            }
+            if(res_line.sc_reg_eu_x === "X"){
+                selLoc++;
+            }
+
+
+            if(selLoc <= 1){
+                addLoc = 1000;
+            }
+            
 
             //lobs
             var addFTM = 0;
@@ -275,6 +297,8 @@ router.get('/:id', (req, res) => {
             var finalAdd = addLoc + addLOB + addInts + addUnts + addUser + addLang + addInstance + addPack + addSize +
                             addEDI + addMiddle + addRICEFW;
 
+            //Add Effort for 1 location 1 region
+            
             oEstimate.WorkHours = finalAdd;  
 
             if(oEstimate.WorkHours <= 11000 ){
@@ -283,24 +307,70 @@ router.get('/:id', (req, res) => {
                 oEstimate.PersonMonths = 6;
                 oEstimate.LowPersonMonths = 5;
                 oEstimate.HighPersonMonths = 7;
+                
+
+                if(selLoc === 2){
+                   addLocExtra = (1000 * 1.1);
+                }
+                if(selLoc === 3){
+                    addLocExtra = addLocExtra + (1000 * 1.1);
+                }
+                if(selLoc === 4){
+                    addLocExtra = addLocExtra + (1000 * 1.1);
+                }
+                oEstimate.addWorkHrs = oEstimate.WorkHours + addLocExtra;
+
+
             }else if(oEstimate.WorkHours > 11000 && oEstimate.WorkHours <= 15000){
                 oEstimate.Scale = "Medium";
                 
                 oEstimate.PersonMonths = 7;
                 oEstimate.LowPersonMonths = 6;
                 oEstimate.HighPersonMonths = 8;
+
+                if(selLoc === 2){
+                    addLocExtra = 1300 * 1.1;
+                 }
+                 if(selLoc === 3){
+                     addLocExtra = addLocExtra + (1300 * 1.1);
+                 }
+                 if(selLoc === 4){
+                     addLocExtra = addLocExtra + (1300 * 1.1);
+                 }
+                 oEstimate.addWorkHrs = oEstimate.WorkHours + addLocExtra;
+
             }else if(oEstimate.WorkHours > 15000 && oEstimate.WorkHours < 20000){
                 oEstimate.Scale = "Large";
 
                 oEstimate.PersonMonths = 8;
                 oEstimate.LowPersonMonths = 7;
                 oEstimate.HighPersonMonths = 9;
+                if(selLoc === 2){
+                    addLocExtra = 1450 * 1.1;
+                 }
+                 if(selLoc === 3){
+                     addLocExtra = addLocExtra + (1450 * 1.1);
+                 }
+                 if(selLoc === 4){
+                     addLocExtra = addLocExtra + (1450 * 1.1);
+                 }
+                 oEstimate.addWorkHrs = oEstimate.WorkHours + addLocExtra;
             }else if(oEstimate.WorkHours >= 20000){
                 oEstimate.Scale = "X-Large";
 
                 oEstimate.PersonMonths = 9;
                 oEstimate.LowPersonMonths = 8;
                 oEstimate.HighPersonMonths = 10;
+                if(selLoc === 2){
+                    addLocExtra = 1600 * 1.1;
+                 }
+                 if(selLoc === 3){
+                     addLocExtra = addLocExtra + (1600 * 1.1);
+                 }
+                 if(selLoc === 4){
+                     addLocExtra = addLocExtra + (1600 * 1.1);
+                 }
+                 oEstimate.addWorkHrs = oEstimate.WorkHours + addLocExtra;
             }
             oEstimate.result = result;    
 
