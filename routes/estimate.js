@@ -9,7 +9,14 @@ router.get('/', (req, res) => {
     const client_name = req.query.client;
     const client_email = req.query.client_email;
 
+    console.log(company);
+    console.log(sector);
+    console.log(region);
+    console.log(client_name);
+    console.log(client_email);
+
     if (company) {
+        
         pool.query('SELECT * FROM cust_estimates WHERE comp_name LIKE ?', [("%" + company + "%")], (error, result) => {
             if (error) throw error;
 
