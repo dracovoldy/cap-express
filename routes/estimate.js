@@ -3,7 +3,7 @@ const pool = require('../data/config');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const company = req.query.comapany;
+    const company = req.query.company;
     const sector = req.query.sector;
     const region = req.query.region;
     const client_name = req.query.client;
