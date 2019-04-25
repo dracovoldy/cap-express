@@ -61,6 +61,8 @@ create table `appdb`.`cust_estimates` (
   `if_syscon_v` INT UNSIGNED, 
   `if_sysize_v` INT UNSIGNED, 
 
+  `if_nonsap_desc` TEXT, 
+
   `if_key_arib_v` TINYINT UNSIGNED default 0, 
   `if_key_conc_v` TINYINT UNSIGNED default 0, 
   `if_key_fiel_v` TINYINT UNSIGNED default 0, 

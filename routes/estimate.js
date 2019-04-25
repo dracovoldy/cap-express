@@ -3,11 +3,51 @@ const pool = require('../data/config');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    pool.query('SELECT * FROM cust_estimates', (error, result) => {
-        if (error) throw error;
+    const company = req.query.comapany;
+    const sector = req.query.sector;
+    const region = req.query.region;
+    const client_name = req.query.client;
+    const client_email = req.query.client_email;
 
-        res.send(result);
-    });
+    if (company) {
+        pool.query('SELECT * FROM cust_estimates WHERE comp_name LIKE ?', [("%" + company + "%")], (error, result) => {
+            if (error) throw error;
+
+            res.send(result);
+        });
+    } else if (sector) {
+        pool.query('SELECT * FROM cust_estimates WHERE comp_sector = ?', [sector], (error, result) => {
+            if (error) throw error;
+
+            res.send(result);
+        });
+    } else if (region) {
+        pool.query('SELECT * FROM cust_estimates WHERE comp_region = ?', [region], (error, result) => {
+            if (error) throw error;
+
+            res.send(result);
+        });
+    } else if (client_name) {
+        pool.query('SELECT * FROM cust_estimates WHERE client_name LIKE ?', [("%" + client_name + "%")], (error, result) => {
+            if (error) throw error;
+
+            res.send(result);
+        });
+    } else if (client_email) {
+        pool.query('SELECT * FROM cust_estimates WHERE client_contact = ?', [("%" + client_email + "%")], (error, result) => {
+            if (error) throw error;
+
+            res.send(result);
+        });
+    }else {
+        pool.query('SELECT * FROM cust_estimates', (error, result) => {
+            if (error) throw error;
+    
+            res.send(result);
+        });
+    }
+
+    
 });
 
 router.get('/:id', (req, res) => {
