@@ -174,9 +174,9 @@ router.get('/:id', (req, res) => {
     oWeights.middle.iHrs = 50;  
 
     oWeights.ricefw = {};
-    oWeights.ricefw.fix = 1;
-    oWeights.ricefw.cHrs = 200;
-    oWeights.ricefw.iHrs = 50; 
+    oWeights.ricefw.fix = 25;
+    oWeights.ricefw.cHrs = 2500;
+    oWeights.ricefw.iHrs = 60; 
 
     pool.query('SELECT * FROM cust_estimates as i WHERE i.entry_id = ?', [estimateId], (error, result) => {
         if (error){

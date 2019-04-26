@@ -81,4 +81,24 @@ router.post('/', function (req, res) {
     });
 });
 
+router.put('/:id', function (req, res) {
+
+    const estimateId = req.params.id;
+
+    let oValue = req.body;
+
+    if (!estimateId) {
+        return res.status(400).send({ error: true, message: 'Please provide estimateId' });
+    }
+
+    if (!oValue) {
+        return res.status(400).send({ error: true, message: 'Please provide values' });
+    }
+
+    pool.query("UPDATE cust_estimates SET ? WHERE entry_id = ?", [oValue, estimateId], function (error, results, fields) {
+        if (error) throw error;
+        return res.status(202).send(results);
+    });
+});
+
 module.exports = router;

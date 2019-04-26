@@ -7,6 +7,8 @@ const cors = require('cors');
 const home = require('./routes/home');
 const estimate = require('./routes/estimate');
 const data = require('./routes/data');
+const createpdf = require('./routes/pdf');
+
 // const jobs = require('./routes/jobs');
 
 const app = express();
@@ -21,7 +23,7 @@ app.use(morgan('tiny'));
 app.use('/', home);
 app.use('/api/estimate', estimate);
 app.use('/api/data', data);
-// app.use('/api/jobs', jobs);
+app.use('/api/createpdf', createpdf);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
