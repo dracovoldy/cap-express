@@ -42,6 +42,7 @@ router.post('/', (req, res) => {
         prepareRow: (row, i) => doc.font('Helvetica').fontSize(12)
     });
 
+    doc.pipe(res);
     doc.end();
 });
 
