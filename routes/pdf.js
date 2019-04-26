@@ -20,16 +20,17 @@ router.get('/:id', (req, res) => {
         if (error) {
             throw error;
         } else {
+            var res_line = result[0];
             //content
             const table0 = {
                 headers: ['Client Fields', 'Data'],
                 rows: [
-                    ['Company', result.comp_name],
+                    ['Company', res_line.comp_name],
                     ['Sector/Market unit', 'Smells like funny'],
                     ['Primary region', 'Where are you'],
-                    ['Client name(s)', result.client_name],
+                    ['Client name(s)', res_line.client_name],
                     ['Title', 'SomeTitle'],
-                    ['Email', result.client_contact]
+                    ['Email', res_line.client_contact]
                 ]
             };
 
@@ -41,11 +42,9 @@ router.get('/:id', (req, res) => {
             const table1 = {
                 headers: ['Name', 'Email', 'Phone'],
                 rows: [
-                    [result.cap_name, result.cap_email, result.cap_phone]
+                    [res_line.cap_name, res_line.cap_email, res_line.cap_phone]
                 ]
-            };
-
-            
+            };           
 
             doc.moveDown().table(table2, {
                 prepareHeader: () => doc.font('Helvetica-Bold'),
