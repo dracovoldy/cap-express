@@ -1,6 +1,6 @@
 const express = require('express');
 const pool = require('../data/config');
-const PDFDocument = require('./modules/pdf');
+const PDFDocument = require('../modules/pdf');
 const router = express.Router();
 
 router.post('/', (req, res) => {
