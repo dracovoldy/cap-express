@@ -46,13 +46,14 @@ router.get('/:id', (req, res) => {
                 ]
             };           
 
-            doc.moveDown().table(table2, {
+            doc.moveDown().table(table1, {
                 prepareHeader: () => doc.font('Helvetica-Bold'),
                 prepareRow: (row, i) => doc.font('Helvetica').fontSize(12)
             });
 
             doc.pipe(res);
             doc.end();
+            
         }
 
         // res.send(result);
