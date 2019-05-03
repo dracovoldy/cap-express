@@ -410,9 +410,13 @@ router.get('/:id', (req, res) => {
 
 
             c_loc1 = locAPAC_A + locEU_A + locLATAM_A + locNA_A;
+            console.log(c_loc1);
             c_loc2 = locAPAC_B + locEU_B + locLATAM_B + locNA_B;
+            console.log(c_loc2);
             c_loc3 = locAPAC_C + locEU_C + locLATAM_C + locNA_C;
+            console.log(c_loc3);
             c_loc4 = locAPAC_D + locEU_D + locLATAM_D + locNA_D;
+            console.log(c_loc4);
 
             var c_loc1_m = (oWeights.loc_a1.fix * oWeights.loc_a1.cHrs) + ((c_loc1 - oWeights.loc_a1.fix) * oWeights.loc_a1.iHrs);
             var c_loc2_m = (oWeights.loc_b1.fix * oWeights.loc_b1.cHrs) + ((c_loc2 - oWeights.loc_b1.fix) * oWeights.loc_b1.iHrs);
