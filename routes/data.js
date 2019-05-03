@@ -426,7 +426,7 @@ router.get('/:id', (req, res) => {
             //final LOC
             var addLoc = c_loc1_m + c_loc2_m + c_loc3_m + c_loc4_m;
 
-            console.log(addLoc);
+            console.log("Loc: "+ addLoc);
           
 
             selLoc = 0;
@@ -568,7 +568,7 @@ router.get('/:id', (req, res) => {
             }
             var addRICEFW = oWeights.ricefw.cHrs + ((wRicef - oWeights.ricefw.fix) * oWeights.ricefw.iHrs);
 
-            console.log(addRICEFW);
+            console.log("ricef " +addRICEFW);
 
             //add all
             var finalAdd = addLoc + addLOB + addInts + addUnts + addUser + addLang + addInstance + addPack + addSize +
