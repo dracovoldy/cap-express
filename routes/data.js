@@ -566,6 +566,8 @@ router.get('/:id', (req, res) => {
             } else if (res_line.sc_unts_v.toString() === "600") {
                 wRicef = 600;
             }
+
+            console.log("selected ricefw :" + wRicef);
             var addRICEFW = oWeights.ricefw.cHrs + ((wRicef - oWeights.ricefw.fix) * oWeights.ricefw.iHrs);
 
             console.log("ricef " +addRICEFW);
