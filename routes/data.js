@@ -474,15 +474,15 @@ router.get('/:id', (req, res) => {
 
             //ints
             var wInts = 0;
-            if (res_line.sc_unts_v.toString() === "70") {
+            if (res_line.sc_ints_v.toString() === "70") {
                 wInts = 75;
-            } else if (res_line.sc_unts_v.toString() === "75") {
+            } else if (res_line.sc_ints_v.toString() === "75") {
                 wInts = 125;
-            } else if (res_line.sc_unts_v.toString() === "80") {
+            } else if (res_line.sc_ints_v.toString() === "80") {
                 wInts = 175;
-            } else if (res_line.sc_unts_v.toString() === "85") {
+            } else if (res_line.sc_ints_v.toString() === "85") {
                 wInts = 225;
-            } else if (res_line.sc_unts_v.toString() === "100") {
+            } else if (res_line.sc_ints_v.toString() === "100") {
                 wInts = 300;
             }
             var addInts = oWeights.scope_ints.cHrs + ((wInts - oWeights.scope_ints.fix) * oWeights.scope_ints.iHrs);
@@ -504,13 +504,13 @@ router.get('/:id', (req, res) => {
 
             //users    
             var wUser = 0;
-            if (res_line.sc_unts_v.toString() === "1") {
+            if (res_line.sc_user_v.toString() === "1") {
                 wUser = 100;
-            } else if (res_line.sc_unts_v.toString() === "2") {
+            } else if (res_line.sc_user_v.toString() === "2") {
                 wUser = 250;
-            } else if (res_line.sc_unts_v.toString() === "3") {
+            } else if (res_line.sc_user_v.toString() === "3") {
                 wUser = 500;
-            } else if (res_line.sc_unts_v.toString() === "4") {
+            } else if (res_line.sc_user_v.toString() === "4") {
                 wUser = 700;
             }
             var addUser = oWeights.scope_user.cHrs + ((wUser - oWeights.scope_user.fix) * oWeights.scope_user.iHrs);
@@ -524,13 +524,13 @@ router.get('/:id', (req, res) => {
 
             //connected systems
             var wConsys = 0;
-            if (res_line.sc_unts_v.toString() === "1") {
+            if (res_line.if_syscon_v.toString() === "1") {
                 wConsys = 10;
-            } else if (res_line.sc_unts_v.toString() === "2") {
+            } else if (res_line.if_syscon_v.toString() === "2") {
                 wConsys = 25;
-            } else if (res_line.sc_unts_v.toString() === "4") {
+            } else if (res_line.if_syscon_v.toString() === "4") {
                 wConsys = 50;
-            } else if (res_line.sc_unts_v.toString() === "5") {
+            } else if (res_line.if_syscon_v.toString() === "5") {
                 wConsys = 60;
             }
             var addPack = oWeights.consys.cHrs + ((wConsys - oWeights.consys.fix) * oWeights.consys.iHrs);
@@ -553,17 +553,17 @@ router.get('/:id', (req, res) => {
 
             //ricefw
             var wRicef = 0;
-            if (res_line.sc_unts_v.toString() === "50") {
+            if (res_line.if_dev_ricefw_v.toString() === "50") {
                 wRicef = 50;
-            } else if (res_line.sc_unts_v.toString() === "125") {
+            } else if (res_line.if_dev_ricefw_v.toString() === "125") {
                 wRicef = 125;
-            } else if (res_line.sc_unts_v.toString() === "200") {
+            } else if (res_line.if_dev_ricefw_v.toString() === "200") {
                 wRicef = 200;
-            } else if (res_line.sc_unts_v.toString() === "300") {
+            } else if (res_line.if_dev_ricefw_v.toString() === "300") {
                 wRicef = 300;
-            } else if (res_line.sc_unts_v.toString() === "500") {
+            } else if (res_line.if_dev_ricefw_v.toString() === "500") {
                 wRicef = 500;
-            } else if (res_line.sc_unts_v.toString() === "600") {
+            } else if (res_line.if_dev_ricefw_v.toString() === "600") {
                 wRicef = 600;
             }
 
