@@ -8,12 +8,13 @@ const home = require('./routes/home');
 const estimate = require('./routes/estimate');
 const data = require('./routes/data');
 const createpdf = require('./routes/pdf');
+const auth = require('./routes/auth');
 
 // const jobs = require('./routes/jobs');
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors());
 app.use(express.static('public'));
@@ -24,6 +25,7 @@ app.use('/', home);
 app.use('/api/estimate', estimate);
 app.use('/api/data', data);
 app.use('/api/createpdf', createpdf);
+app.use('/api/auth', auth);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

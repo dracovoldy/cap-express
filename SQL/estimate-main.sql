@@ -2,15 +2,15 @@ DROP table `appdb`.`cust_estimates`;
 
 create table `appdb`.`cust_estimates` (
   `entry_id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-  `comp_name` VARCHAR(20),
+  `comp_name` TEXT,
   `comp_sector` VARCHAR(10),
   `comp_region` VARCHAR(5),
   `client_name` TEXT,
   `client_title` TEXT,
   `client_contact` TEXT, 
-  `cap_name` VARCHAR(20),  
+  `cap_name` TEXT, 
   `cap_email` TEXT,
-  `cap_phone` VARCHAR(15) default "0",  
+  `cap_phone` TEXT,
 
   `bg_newcust` VARCHAR(1) default "N",
   `bg_impyear` VARCHAR(4) default "0000",
@@ -93,7 +93,7 @@ create table `appdb`.`cust_estimates` (
 
   `if_dev_edi_v` INT UNSIGNED, 
   `if_dev_mdlw_v` INT UNSIGNED, 
-  `if_dev_mdlw_desc` VARCHAR(20),
+  `if_dev_mdlw_desc` TEXT,
   `if_dev_ricefw_v` INT UNSIGNED, 
   `if_dev_comm` TEXT,
 
